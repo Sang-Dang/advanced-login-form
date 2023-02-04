@@ -2,50 +2,41 @@
 <html lang="en">
 
 <head>
-    <title>Log in | Sign up</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/reset.css">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <section class="display">
-        <header>
-            <img src="./assets/images/Skillcetera-Logo.png" alt="Skillcetera-Logo" class="logo">
-        </header>
-        <main>
-            <h1>Welcome to Skillcetera</h1>
-            <p>We're the English and Skills Club at FPT University, and our aim is to help all students become the
-                Greatest of all time!</p>
-        </main>
-        <footer>
-            <a href="www.facebook.com/skillcetera" class="link"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.tiktok.com/tag/skillcetera?lang=en" class="link"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://instagram.com/skillcetera" class="link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCGsTO4PQdnL_zsawmp9kwUQ" class="link"><i class="fa-brands fa-youtube"></i></a>
-        </footer>
-    </section>
-    <section class="login-form">
-        <p id="greeting">Good morning!</p>
-        <h1>Log in to your Account</h1>
-        <form action="gatekeeper" method="GET" id="login-form-object">
-            <input type="hidden" name="action" value="login">
-            <input type="text" name="email" id="email" placeholder="Enter your email" class="nonblank error">
-            <input type="password" name="password" id="password" placeholder="Enter your password" class="nonblank">
-            <a href="#" class="forgot-password">Forgot Password?</a>
-            <input type="submit" value="Login">
-        </form>
-    </section>
-    
-    <!-- JAVASCRIPT -->
+    <div class="container" onclick="onclick">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="center">
+            <header>
+                <a href="#" class="tab-button current">Log in</a>
+                <p>|</p>
+                <a href="#" class="tab-button">Sign up</a>
+            </header>
+            <form action="MainController" action="POST" id="login" class="mainform active">
+                <input type="hidden" name="action" value="login">
+                <input type="text" name="email" placeholder="email" class="nonblank isEmail">
+                <input type="password" name="password" placeholder="password" class="nonblank">
+                <input type="submit" value="Log in" class="submit">
+            </form>
+            <form action="MainController" action="POST" id="signup" class="mainform">
+                <input type="hidden" name="action" value="signup">
+                <input type="text" name="name" placeholder="name" class="nonblank">
+                <input type="text" name="email" placeholder="email" class="nonblank isEmail">
+                <input type="password" name="password" placeholder="password" class="nonblank">
+                <input type="submit" value="Sign up" class="submit">
+            </form>
+            <h2>&nbsp;</h2>
+        </div>
+    </div>
+
     <script src="js/login.js"></script>
 </body>
 

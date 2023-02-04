@@ -1,93 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 body {
-    position: relative;
-    overflow: hidden;
-    font-family: Montserrat, sans-serif;
-
-    section {
-        position: absolute;
-        top: 0;
-        height: 100vh;
-        display: flex;
-    }
+  min-height: 100vh;
+  font-family: "Raleway", sans-serif;
+  overflow: hidden;
 }
 
-section.login-form {
-    right: 0;
-    width: 40%;
-    padding: 70px;
-    flex-direction: column;
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &:hover,
+  &:active {
+    .top,
+    .bottom {
+      &:before,
+      &:after {
+        margin-left: 200px;
+        transform-origin: -200px 50%;
+        transition-delay: 0s;
+      }
+    }
+
+    .center {
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+  }
+}
+
+.top,
+.bottom {
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 200vmax;
+    height: 200vmax;
+    top: 50%;
+    left: 50%;
+    margin-top: -100vmax;
+    transform-origin: 0 50%;
+    transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    z-index: 10;
+    opacity: 0.65;
+    transition-delay: 0.2s;
+  }
+}
+
+.top {
+  &:before {
+    transform: rotate(45deg);
+    background: #e46569;
+  }
+  &:after {
+    transform: rotate(135deg);
+    background: #ecaf81;
+  }
+}
+
+.bottom {
+  &:before {
+    transform: rotate(-45deg);
+    background: #60b8d4;
+  }
+  &:after {
+    transform: rotate(-135deg);
+    background: #3745b5;
+  }
+}
+
+.center {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay: 0s;
+  color: #333;
+
+  input {
+    width: 100%;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+}
+
+//
+
+body .center {
+  .mainform {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  input {
+    transition: all .5s linear;
     
-    h1 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        line-height: 3.2rem;
-        margin-bottom: 20px;
+    &.error {
+      border-color: red;
     }
 
-    #login-form-object {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
+    &.error::placeholder {
+        color: red;
+    }
 
-        input {
-            outline: none;
-            border: none;
-            border-bottom: 2px solid rgb(34, 0, 114);
-            height: 40px;
+    &.submit {
+        transition: all 0.2s linear;
+        &:hover {
+            background-color: black;
+            color: white;
         }
-    }
-}
-
-section.display {
-    left: 0;
-    width: 60%;
-    background-image: url(../assets/images/desktop/background-left.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: center;
-    padding: 50px 150px 50px 60px;
-    flex-direction: column;
-    justify-content: space-between;
-
-    & * {
-        position: relative;
-        z-index: 1;
-        color: white;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(34, 0, 114, 0.593);
-    }
-
-    header {
-        width: 30%;
-    }
-
-    main {
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.5rem;
-            font-weight: 200;
-            margin-bottom: 30px;
+        &:active {
+            transform: scale(90%);
         }
     }
 
-    footer {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
+    @media (max-width: 400px) {
+        width: 90vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
     }
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: black;
+      transition: all 0.2s linear;
+
+      &.current {
+        font-weight: 600;
+      }
+
+      &:active {
+        transform: scale(90%);
+      }
+    }
+  }
 }
